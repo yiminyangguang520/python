@@ -7,6 +7,12 @@ cishu = 0
 socket.setdefaulttimeout(15)
 
 
+def zhongjian(yourstr, leftstr, rightstr):
+    leftposition = yourstr.find(leftstr)
+    rightposition = yourstr.find(rightstr, leftposition)
+    return yourstr[leftposition+len(leftstr):rightposition]
+
+
 def gethtml():
     global cishu
     cishu += 1
