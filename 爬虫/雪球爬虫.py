@@ -3,13 +3,7 @@ __author__ = 'yangpeiwen'
 
 from urllib2 import *
 import socket
-
-
-def zhongjian(yourstr, leftstr, rightstr):
-    leftposition = yourstr.find(leftstr)
-    rightposition = yourstr.find(rightstr, leftposition)
-    return yourstr[leftposition+len(leftstr):rightposition]
-    # 取文本中间内容
+from ypw import *
 
 header = """
 Host: xueqiu.com
@@ -38,7 +32,7 @@ def addheader(irequest, iheader):
 asd = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=MON&count=200&page=1"
 url = Request(asd)  # 创建一个urllib2里面的Request,这个request可以伪造HTTP头
 addheader(url, header)
-socket.setdefaulttimeout(10)
+socket.setdefaulttimeout(30)
 
 html = urlopen(url).read()
 html = html.replace("false", "False")
@@ -47,9 +41,15 @@ html = html.replace("null", "None")
 # 将javascript的false等,转为python的False
 print html
 urls = ""
+hosts = {}
 exec("urls = "+html)  # 开挂直接把文本转成python里的变量
-ilists = urls['list']  # 文章都在list理=里面
+ilists = urls['list']  # 文章都在list里面
 for ilist in ilists:
     if ilist['title']:  # title可能为None
-        link = zhongjian(ilist['text'].decode('utf-8'), '>', '<')  #寻找链接
+        link = zhongjian(ilist['text'].decode('utf-8'), '>', '<')  # 寻找链接
         print ilist['title'], "----", link
+        hosts[zhongjian(link.decode('utf-8'), "http://", "/")] = 1
+
+for host in hosts:
+    print host
+print len(hosts)
