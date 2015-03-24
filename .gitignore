@@ -1,3 +1,7 @@
 *.txt
 *.pdf
 .idea/workspace.xml
+
+*.zip
+
+*.pyc

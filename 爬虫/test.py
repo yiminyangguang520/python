@@ -2,7 +2,6 @@
 __author__ = 'yangpeiwen'
 from newscrawer2 import *
 
-content = getnewscontent("http://www.techweb.com.cn/world/2015-03-24/2136365.shtml")
-print content
-
-# print urllib.urlopen("http://finance.sina.com.cn/stock/t/20150311/095421695136.shtml").read()
+content = getnewscontent("http://tech.sina.com.cn/i/2015-02-11/doc-icczmvun6020524.shtml")
+print content, type(content)
+# print urllib.urlopen("http://finance.sina.com.cn/chanjing/gsnews/20140718/183619752276.shtml").read()

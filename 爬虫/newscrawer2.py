@@ -6,7 +6,12 @@ from ypw import *
 from bs4 import BeautifulSoup
 import chardet
 
-attrContent = [{"id": "artibody"},
+
+attrContent = [{"id": "Cnt-Main-Article-QQ"},
+               {"id": "Main_Content_Val"},
+               {"id": "artibody"},
+               {"id": "main_content"},
+               {"id": "articleContent"},
                {"id": "qmt_content_div"},
                {"id": "text"},
                {"id": "the_content"},
@@ -14,10 +19,10 @@ attrContent = [{"id": "artibody"},
                {"id": "article_body"},
                {"id": "text_content"},
                {"id": "ctrlfscont"},
-               {"id": "Cnt-Main-Article-QQ"},
                {"id": "Article"},
                {"id": "bodytext"},
                {"id": "article_content"},
+               {"id": "newscontent"},
                {"itemprop": "articleBody"},
                {"class": "text"},
                {"class": "inner"},
@@ -48,24 +53,27 @@ def htmldecode(ihtml):
 
 def getnewscontent(url):
     html = urllib.urlopen(url).read()
-    html = htmldecode(html)
+    # html = htmldecode(html)
     html = ifrefresh(html)
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, from_encoding='gb18030')
     for attr in attrContent:
         content = soup.find(attrs=attr)
         if content is None:
             continue
         else:
             ps = content.findAll("p")
-            if ps is not None:
+            if str(ps) != "[]":
+                content = ""
                 for p in ps:
-                    content = ""
                     content += p.text + "\n"
-                    content = content.replace("\n\n", "\n")
+                content = content.replace("\n\n", "\n")
             else:
-                content = content.text
+                content = str(content).replace("<br>", "\n")
+                content = str(content).replace("<br/>", "\n")
+                content = BeautifulSoup(content).text
             break
     if content is None:
         print "没有找到内容", url
         content = ""
+
     return content

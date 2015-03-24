@@ -14,7 +14,7 @@ if not os.path.exists("平"):
 
 
 def getcsvdata():
-    f = open("AAPL.csv", "r")
+    f = open("EDU.csv", "r")
     f.readline()
     f.readline()
     ilist = {}
