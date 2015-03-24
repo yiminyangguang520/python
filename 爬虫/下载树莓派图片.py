@@ -11,7 +11,7 @@ soup = BeautifulSoup(html)
 imgs = soup.findAll("img")
 for img in imgs:
     print img['src']
-    url2 = url+img['src']
-    filepath = "/Users/yangpeiwen/Desktop/img/"+img['src']
+    url2 = url + img['src']
+    filepath = "/Users/yangpeiwen/Desktop/img/" + img['src']
     if not os.path.exists(filepath):
         urlretrieve(url2.encode('utf-8'), filepath)
