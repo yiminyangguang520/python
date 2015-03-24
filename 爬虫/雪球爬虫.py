@@ -4,10 +4,10 @@ __author__ = 'yangpeiwen'
 import socket
 import urllib2
 import os
-from newscrawer import *
+from newscrawer2 import *
 
 socket.setdefaulttimeout(30)
-url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=MON&count=200&page=3"
+url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=AAPL&count=200&page=1"
 
 
 def downloadxueqiu():

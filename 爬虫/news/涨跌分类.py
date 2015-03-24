@@ -1,11 +1,20 @@
+# coding: utf-8
 __author__ = 'yangpeiwen'
 
 import time
 import os
 
 
-def getmon():
-    f = open("mon.csv", "r")
+if not os.path.exists("涨"):
+    os.mkdir("涨")
+if not os.path.exists("跌"):
+    os.mkdir("跌")
+if not os.path.exists("平"):
+    os.mkdir("平")
+
+
+def getcsvdata():
+    f = open("AAPL.csv", "r")
     f.readline()
     f.readline()
     ilist = {}
@@ -22,7 +31,7 @@ def getmon():
     return ilist
 
 
-mylist = getmon()
+mylist = getcsvdata()
 for parent, dirnames, filenames in os.walk("."):
     for filename in filenames:
         if filename.find(".txt") != -1:
@@ -34,9 +43,12 @@ for parent, dirnames, filenames in os.walk("."):
                 if timestring in mylist.keys():
                     break
             print filename, timestring, mylist[timestring]
-            if mylist[timestring] > 0:
-                os.rename(filename, "zhang/" + filename)
-            elif mylist[timestring] < 0:
-                os.rename(filename, "die/" + filename)
-            else:
-                os.rename(filename, "none/" + filename)
+            try:
+                if mylist[timestring] > 0:
+                    os.rename(filename, "涨/" + filename)
+                elif mylist[timestring] < 0:
+                    os.rename(filename, "跌/" + filename)
+                else:
+                    os.rename(filename, "平/" + filename)
+            except:
+                pass
