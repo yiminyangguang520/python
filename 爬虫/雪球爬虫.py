@@ -33,6 +33,13 @@ class DownloadThread(threading.Thread):
                     f.write(content.encode('utf-8'))
                     f.close()
                     print "完成任务:", title, "----", link, "time:", newstime
+            except IOError as e:
+                if str(e).find("time out") != -1:
+                    task = (link, path, title, newstime)
+                    q.put(task)
+                    print "下载失败:", e, "重新下载", link
+                else:
+                    print "下载失败:错误信息:", e, link
             except Exception as e:
                 print "下载失败:错误信息:", e, link
             time.sleep(0.1)
@@ -70,9 +77,9 @@ def downloadxueqiu(page):
     print "获取列表完成", iurl, " queue:", q.qsize()
 
 
-for i in range(2):
+for i in range(1, 5):
     downloadxueqiu(i)
 
-for i in range(20):
+for i in range(10):
     t = DownloadThread(q)
     t.start()
