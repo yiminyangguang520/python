@@ -1,11 +1,13 @@
 __author__ = 'yangpeiwen'
 
 import os
-from PIL import Image
 
 for parent, dirnames, filenames in os.walk("/Users/yangpeiwen/Desktop/img/"):
     for filename in filenames:
         if filename.find(".jpg") != -1:
-            im = Image.open("/Users/yangpeiwen/Desktop/img/" + filename)
-            if im.size != (1920, 1080):
-                print im.size, filename
+            f = open("/Users/yangpeiwen/Desktop/img/" + filename)
+            f.seek(-1, 2)
+            data = ord(f.read())
+            if data != 217:
+                os.remove("/Users/yangpeiwen/Desktop/img/" + filename)
+                print filename
