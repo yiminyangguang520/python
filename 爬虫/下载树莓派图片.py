@@ -3,9 +3,10 @@ __author__ = 'yangpeiwen'
 from bs4 import BeautifulSoup
 from urllib import *
 import os
+import socket
 
-url = "http://192.168.191.6/img/"
-
+url = "http://192.168.155.3/img/"
+socket.setdefaulttimeout(300)
 html = urlopen(url).read()
 soup = BeautifulSoup(html)
 imgs = soup.findAll("img")
