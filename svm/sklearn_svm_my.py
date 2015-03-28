@@ -4,7 +4,8 @@ __author__ = 'yangpeiwen'
 
 from pylab import *
 from sklearn import svm
-from yzm_my import *
+
+from svm.yzm_my import *
 
 
 testyzm0 = (
