@@ -18,7 +18,7 @@ def attack():
     while True:
         try:
             gethtml()
-        except error:
+        except:
             pass
 
 

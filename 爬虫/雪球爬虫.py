@@ -81,5 +81,5 @@ for i in range(1, 5):
     downloadxueqiu(i)
 
 for i in range(10):
-    t = DownloadThread(q)
+    t = DownloadThread(queue=q)
     t.start()
