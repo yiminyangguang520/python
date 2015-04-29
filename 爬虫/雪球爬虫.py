@@ -10,7 +10,7 @@ import Queue
 import time
 
 socket.setdefaulttimeout(10)
-url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=EDU&count=200&page="
+url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=EDU&count=100&page="
 q = Queue.Queue()
 
 
@@ -30,7 +30,7 @@ class DownloadThread(threading.Thread):
                     f = open(path, "w")
                     f.write(title + "\n\n")
                     f.write(link + "\n\n")
-                    f.write(content.encode('utf-8'))
+                    f.write(content.encode('utf-8', 'ignore'))
                     f.close()
                     print "完成任务:", title, "----", link, "time:", newstime
             except IOError as e:
@@ -77,7 +77,7 @@ def downloadxueqiu(page):
     print "获取列表完成", iurl, " queue:", q.qsize()
 
 
-for i in range(1, 5):
+for i in range(1, 2):
     downloadxueqiu(i)
 
 for i in range(10):

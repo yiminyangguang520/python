@@ -12,7 +12,7 @@ jieba.analyse.set_stop_words("stop_words.txt")
 path = "跌"
 
 
-def fenci():
+def fenxi():
     for parent, dirnames, filenames in os.walk(path):
         for filename in filenames:
             if filename.find("txt") != -1:
@@ -26,4 +26,5 @@ def fenci():
                 #     break
                 # break
 
-fenci()
+if __name__ == '__main__':
+    fenxi()
