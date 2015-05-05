@@ -68,7 +68,7 @@ import math
 # print test
 
 # 从键盘读取字符转换成数字
-# a = raw_input()
+# ]a = raw_input()
 # print 2 * a
 # print 2 * int(a)
 
