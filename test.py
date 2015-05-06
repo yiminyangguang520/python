@@ -36,9 +36,13 @@
 # a = raw_input()
 # print urllib.urlopen(a).read()
 
-try:
-    print open("a.txt").read()
-except Exception as e:
-    print e
-import os
-print os.path.split(os.path.realpath(__file__))[0]
+# try:
+#     print open("a.txt").read()
+# except Exception as e:
+#     print e
+# import os
+# print os.path.split(os.path.realpath(__file__))[0]
+
+asd = "17812345678,18612345678"
+import re
+print "\n".join(re.findall(r"\d{11}", asd))

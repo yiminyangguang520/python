@@ -28,7 +28,7 @@ import re
 # if delta >= 0:
 # x1 = (math.sqrt(delta)-b)/(2*a)
 # x2 = (-math.sqrt(delta)-b)/(2*a)
-#     print x1, x2
+# print x1, x2
 # else:
 #     print '无解'
 
@@ -107,14 +107,8 @@ import re
 #     i += 1
 # print temp.data
 
-text = """
-The intent of this workshop is to one-year be a place where a person with a few C skills and some microcontroller experience can familiarize themself with the Tiva C Series parts, Code Composer Studio, TivaWare for C Series and the process of programming these microcontrollers. If you lack C programming skills, there are many courses on the Internet where you can gain them ... that knowledge can form the basis for a rewarding career.
-
-If you are migrating from earlier Stellaris devices, please refer to this document for more information.
-
-The labs in this workshop (with the exception of Chapter 15's PWM lab) will also work perfectly well on the Stellaris LM4F120 LaunchPad ... no changes are required.
-"""
-# z = r"-?\d+\.?\d*"
+text = """Add New problem"""
+text = raw_input()
 z = r"\w+'?-?\w*"
 a = re.findall(z, text)
 adict = {}
@@ -123,6 +117,8 @@ for i in a:
         adict[i] += 1
     else:
         adict[i] = 1
-
+adict = adict.iteritems()
+adict = sorted(adict, key=lambda d: d[0], reverse=False)
+adict = sorted(adict, key=lambda d: d[1], reverse=True)
 for i in adict:
-    print i, "出现了", adict[i], "次"
+    print i[0], "出现了", i[1], "次"
