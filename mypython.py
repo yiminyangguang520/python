@@ -1,6 +1,6 @@
 # coding: utf-8
 __author__ = 'node'
-from math import *
+#from math import *
 import re
 
 
@@ -107,18 +107,33 @@ import re
 #     i += 1
 # print temp.data
 
-text = """Add New problem"""
-text = raw_input()
-z = r"\w+'?-?\w*"
-a = re.findall(z, text)
-adict = {}
-for i in a:
-    if i in adict:
-        adict[i] += 1
+# text = """Add New problem"""
+# text = raw_input()
+# z = r"\w+'?-?\w*"
+# a = re.findall(z, text)
+# adict = {}
+# for i in a:
+#     if i in adict:
+#         adict[i] += 1
+#     else:
+#         adict[i] = 1
+# adict = adict.iteritems()
+# adict = sorted(adict, key=lambda d: d[0], reverse=False)
+# adict = sorted(adict, key=lambda d: d[1], reverse=True)
+# for i in adict:
+#     print i[0], "出现了", i[1], "次"
+
+
+s = "MCMXCVI"
+mydict = {"M": 1000, "D": 500, "C": 100, "L": 50, "X": 10, "V": 5, "I": 1}
+num = 0
+for i in range(len(s)):
+    now = mydict.get(s[i])
+    if i < len(s) - 1:
+        if mydict.get(s[i + 1]) > now:
+            num -= now
+        else:
+            num += now
     else:
-        adict[i] = 1
-adict = adict.iteritems()
-adict = sorted(adict, key=lambda d: d[0], reverse=False)
-adict = sorted(adict, key=lambda d: d[1], reverse=True)
-for i in adict:
-    print i[0], "出现了", i[1], "次"
+        num += now
+print num
