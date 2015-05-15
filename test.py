@@ -6,8 +6,8 @@
 # n = input()
 # s = 0
 # for i in range(n):
-#     number = input()
-#     s += number
+# number = input()
+# s += number
 # print s
 
 # 全局变量使用
@@ -15,12 +15,12 @@
 
 
 # def say_hello():
-#     print 'hello ' + name
+# print 'hello ' + name
 #
 # say_hello()
 
 # def change_name(new_name):
-#     # global name
+# # global name
 #     name = new_name
 #     print name
 # change_name('wbd')
@@ -43,6 +43,8 @@
 # import os
 # print os.path.split(os.path.realpath(__file__))[0]
 
-asd = "17812345678,18612345678"
-import re
-print "\n".join(re.findall(r"\d{11}", asd))
+# asd = "17812345678,18612345678"
+# import re
+# print "\n".join(re.findall(r"\d{11}", asd))
+
+
