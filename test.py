@@ -21,7 +21,7 @@
 
 # def change_name(new_name):
 # # global name
-#     name = new_name
+# name = new_name
 #     print name
 # change_name('wbd')
 
@@ -47,4 +47,43 @@
 # import re
 # print "\n".join(re.findall(r"\d{11}", asd))
 
+# import re
+#
+#
+# class WordDictionary:
+#     def __init__(self):
+#         self.str = ""
+#
+#     # @param {string} word
+#     # @return {void}
+#     # Adds a word into the data structure.
+#
+#     def addWord(self, word):
+#         self.str += word
+#
+#     # @param {string} word
+#     # @return {boolean}
+#     # Returns if the word is in the data structure. A word could
+#     # contain the dot character '.' to represent any one letter.
+#     def search(self, word):
+#         if self.str.find(word) != -1:
+#             return True
+#         return len(re.findall(word, self.str)) != 0
+#
+# # Your WordDictionary object will be instantiated and called as such:
+# # wordDictionary = WordDictionary()
+# # wordDictionary.addWord("word")
+# # wordDictionary.search("pattern")
+#
+# wd = WordDictionary()
+# wd.addWord("bad")
+# wd.addWord("dad")
+# wd.addWord("mad")
+# print wd.search("pad")  # -> false
+# print wd.search("bad")  # -> true
+# print wd.search(".ad")  # -> true
+# print wd.search("b..")  # -> true
 
+from math import *
+for i in range(50):
+    print i, factorial(i)
