@@ -63,7 +63,6 @@ class ButtonFrame(wx.Frame):
         show()
 
 
-
 if __name__ == '__main__':
     app = wx.PySimpleApp()
     frame = ButtonFrame()
