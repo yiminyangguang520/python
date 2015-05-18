@@ -85,5 +85,7 @@
 # print wd.search("b..")  # -> true
 
 from math import *
-for i in range(50):
-    print i, factorial(i)
+# for i in range(10000, 10010):
+#     print i, factorial(i)
+f = open("jc.txt", "w")
+f.write(str(factorial(100000)))
