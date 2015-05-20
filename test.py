@@ -84,8 +84,18 @@
 # print wd.search(".ad")  # -> true
 # print wd.search("b..")  # -> true
 
-from math import *
-# for i in range(10000, 10010):
-#     print i, factorial(i)
-f = open("jc.txt", "w")
-f.write(str(factorial(100000)))
+# from math import *
+#
+# print str(factorial(100))
+
+nums1 = [0]
+nums2 = [1]
+m = 0
+n = 1
+
+str1 = nums1[:m]
+str2 = nums2[:n]
+str3 = str1 + str2
+str3.sort()
+nums1 = str3
+print nums1
