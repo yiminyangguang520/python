@@ -88,14 +88,16 @@
 #
 # print str(factorial(100))
 
-nums1 = [0]
-nums2 = [1]
-m = 0
-n = 1
+# nums1 = [0]
+# nums2 = [1]
+# m = 0
+# n = 1
+#
+# str1 = nums1[:m]
+# str2 = nums2[:n]
+# str3 = str1 + str2
+# str3.sort()
+# nums1 = str3
+# print nums1
 
-str1 = nums1[:m]
-str2 = nums2[:n]
-str3 = str1 + str2
-str3.sort()
-nums1 = str3
-print nums1
+
