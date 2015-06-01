@@ -100,4 +100,29 @@
 # nums1 = str3
 # print nums1
 
+asd = """
+---
+计费方式:包月(允许国际)[M1-T]L020 [C1]
+---
+每月免费定额(RMB):	      0.00元
+当前剩余网费(RMB):	      8.72元
+本月免费余额(RMB):	      0.00元
+---
+最低保证金(RMB):		      0.50元
+---
+开户日期:		    20130821
+最后使用日期:		    20150527
+本月剩余可用流量:	     20480兆字节
+本月剩余免费流量:	      2560兆字节
+其它认证用ID:		    D31304A4
 
+"""
+
+import re
+
+results = re.findall(r"(\d+)兆", asd)
+liuliang = 0
+print results
+for tmp in results:
+    liuliang += int(tmp)
+print liuliang
