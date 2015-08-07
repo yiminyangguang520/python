@@ -13,6 +13,7 @@ r = s.post(url, params=postdata)
 s.get("http://10.0.40.216/bgsxk/xk/getXkInfo?jx0502zbid=97&jx0502id=50")
 # 历史类,其他类请自行抓包
 
+
 def shua(inurl):
     global yes, i
     r2 = s.get(inurl, timeout=5)

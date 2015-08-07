@@ -1,7 +1,7 @@
 # coding:utf-8
 __author__ = 'yangpeiwen'
 
-import urllib
+import requests
 from ypw import *
 from bs4 import BeautifulSoup
 import chardet
@@ -51,7 +51,7 @@ def ifrefresh(ihtml):
     irefresh = soup.find(attrs={"http-equiv": "refresh"})
     if irefresh is not None:
         newurl = zhongjian(str(irefresh), "url=", '"')
-        ihtml = urllib.urlopen(newurl).read()
+        ihtml = requests.get(newurl).text
     return ihtml
 
 
@@ -61,7 +61,7 @@ def htmldecode(ihtml):
 
 
 def getnewscontent(url):
-    html = urllib.urlopen(url).read()
+    html = requests.get(url).text
     # html = htmldecode(html)
     html = ifrefresh(html)
     soup = BeautifulSoup(html, from_encoding='gb18030')
