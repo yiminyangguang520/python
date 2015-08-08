@@ -3,14 +3,14 @@ __author__ = 'yangpeiwen'
 
 import socket
 import threading
-import queue
+import Queue
 import time
 import requests
 from bs4 import BeautifulSoup
 
 socket.setdefaulttimeout(10)
 url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=EDU&count=100&page="
-q = queue.Queue()
+q = Queue.Queue()
 
 s = requests.session()
 s.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.130 Safari/537.36"
@@ -89,7 +89,7 @@ def getnewscontent(iurl):
                 icontent = BeautifulSoup(icontent).text
             break
     if icontent is None:
-        print("没有找到内容", url)
+        print "没有找到内容", url
         icontent = ""
 
     return icontent
@@ -108,25 +108,24 @@ class DownloadThread(threading.Thread):
             # print "得到任务:", title, "----", link, "time:", newstime
             try:
                 self.content = getnewscontent(link)
-                print(self.content)
+                # print self.content
                 if len(self.content) > 5:
-                    f = open(path, "w", encoding="UTF-8")
-                    f.write(title + "\n\n")
-                    f.write(link + "\n\n")
-                    f.flush()
-                    f.write(self.content)
-                    f.flush()
+                    # , encoding="UTF-8"
+                    f = open(path, "w")
+                    f.write(title.encode("UTF-8") + "\n\n")
+                    f.write(link.encode("UTF-8") + "\n\n")
+                    f.write(self.content.encode("UTF-8"))
                     f.close()
-                    print("完成任务:", title, "----", link, "time:", newstime)
+                    print "完成任务:", title, "----", link, "time:", newstime
             except IOError as e:
                 if str(e).find("time out") != -1:
                     task = (link, path, title, newstime)
                     q.put(task)
-                    print("下载失败:", e, "重新下载", link)
+                    print "下载失败:", e, "重新下载", link
                 else:
-                    print("下载失败:错误信息:", e, link)
+                    print "下载失败:错误信息:", e, link
             except Exception as e:
-                print("下载失败:错误信息:", e, link)
+                print "下载失败:错误信息:", e, link
             time.sleep(0.1)
             if self.queue.empty():
                 break
@@ -146,9 +145,8 @@ def downloadxueqiu(page):   # 获取股票的新闻链接
             path = "news/" + str(newstime) + ".txt"
             # if not os.path.exists(path):
             task = (link, path, title, newstime)
-            print(task)
             q.put(task)
-    print("获取列表完成", iurl, " queue:", q.qsize())
+    print "获取列表完成", iurl, " queue:", q.qsize()
 
 
 for i in range(1, 2):

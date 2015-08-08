@@ -108,14 +108,12 @@ class DownloadThread(threading.Thread):
             # print "得到任务:", title, "----", link, "time:", newstime
             try:
                 self.content = getnewscontent(link)
-                print(self.content)
+                # print(self.content)
                 if len(self.content) > 5:
                     f = open(path, "w", encoding="UTF-8")
                     f.write(title + "\n\n")
                     f.write(link + "\n\n")
-                    f.flush()
                     f.write(self.content)
-                    f.flush()
                     f.close()
                     print("完成任务:", title, "----", link, "time:", newstime)
             except IOError as e:
