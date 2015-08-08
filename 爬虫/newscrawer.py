@@ -2,9 +2,7 @@
 __author__ = 'yangpeiwen'
 
 import urllib
-from ypw import *
 from bs4 import BeautifulSoup
-import chardet
 
 attrContent = {"finance.sina.com.cn": {"id": "artibody"},
                "tech.sina.com.cn": {"id": "artibody"},
@@ -39,6 +37,13 @@ attrContent2 = {"www.ccin.com.cn": {"class": "art_con"}}
 nop = "stock.sohu.com,www.ccin.com.cn"
 
 
+def zhongjian(yourstr, leftstr, rightstr):
+    leftposition = yourstr.find(leftstr)
+    rightposition = yourstr.find(rightstr, leftposition + len(leftstr))
+    return yourstr[leftposition + len(leftstr):rightposition]
+    # 取文本中间内容
+
+
 def ifrefresh(ihtml):
     lowhtml = ihtml.lower()
     soup = BeautifulSoup(lowhtml)
@@ -47,11 +52,6 @@ def ifrefresh(ihtml):
         newurl = zhongjian(str(irefresh), "url=", '"')
         ihtml = urllib.urlopen(newurl).read()
     return ihtml
-
-
-def htmldecode(ihtml):
-    chardit1 = chardet.detect(ihtml)
-    return ihtml.decode(chardit1['encoding'], "ignore")
 
 
 def getnewscontent(url):

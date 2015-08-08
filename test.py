@@ -127,9 +127,3 @@
 #     liuliang += int(tmp)
 # print liuliang
 
-import requests
-from pylab import *
-
-data = requests.get("http://pic3.zhimg.com/39420a7da_m.jpg")
-
-imshow(data)
