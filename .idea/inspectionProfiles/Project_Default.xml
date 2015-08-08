@@ -20,6 +20,7 @@
         <list>
           <option value="test.*" />
           <option value="爬虫.雪球爬虫2.newscrawer2" />
+          <option value="str.findAll" />
         </list>
       </option>
     </inspection_tool>
