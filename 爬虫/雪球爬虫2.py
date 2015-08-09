@@ -8,14 +8,22 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-socket.setdefaulttimeout(10)
-url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=EDU&count=100&page="
-q = Queue.Queue()
-
 s = requests.session()
 s.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.130 Safari/537.36"
 s.get("http://xueqiu.com")
 # 反反爬虫策略：设置agent为普通浏览器，然后访问首页获取cookie
+
+
+socket.setdefaulttimeout(10)
+# keyword = "新东方"
+# keyurl = "http://xueqiu.com/stock/search.json?code=" + keyword + "&size=1"
+# keyrequest = s.get(keyurl)
+# keyjson = keyrequest.json()
+# print keyjson['stocks']
+
+url = "http://xueqiu.com/statuses/stock_timeline.json?symbol_id=EDU&count=100&page="
+q = Queue.Queue()
+
 
 attrContent = [{"itemprop": "articleBody"},
                {"id": "Cnt-Main-Article-QQ"},
