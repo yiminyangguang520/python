@@ -160,7 +160,7 @@ def downloadxueqiu(page):   # 获取股票的新闻链接
 for i in range(1, 2):
     downloadxueqiu(i)
 
-for i in range(10):
+for i in range(25):
     t = DownloadThread(q)
     t.start()
 
