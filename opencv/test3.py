@@ -4,6 +4,7 @@ import cv2
 import cv2.cv as cv
 import PIL.Image as Image
 import StringIO
+import socket
 
 capture = cv2.VideoCapture(-1)
 capture.set(cv.CV_CAP_PROP_FRAME_WIDTH, 640)
