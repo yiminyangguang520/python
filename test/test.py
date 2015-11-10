@@ -1,28 +1,21 @@
-__author__ = 'yangpeiwen'
-from threading import Thread
-from time import *
-
-table = [0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90, 0x88, 0x83, 0xc6, 0xa1, 0x86, 0x8e]
-
-number = '1'
+# coding: utf-8
+from bs4 import BeautifulSoup
 
 
-def dis():
-    i = 1
-    global number
-    while True:
-        i += 1
-        number = str(i)
+text = """class="CategoryTreeLabel CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="/wiki/Category:Comics">Comics</a>‎ <span dir="ltr" title="Contains 1 subcategory, 7 pages, and 0 files">(7 articles; 1 subcategory)</span></div>
+<div class="CategoryTreeChildren" style="display:none"></div></div>
+</li>
+<li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="/wiki/Category:Creative_Taiwan">Creative Taiwan</a>‎ <span dir="ltr" title="Contains 0 subcategories, 2 pages, and 0 files">(2 articles)</span></div>
+<div class="CategoryTreeChildren" style="display:none"></div></div>
+</li></ul></div><div class="mw-category-group"><h3>D</h3>
+<ul><li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="/wiki/Category:Dance">Dance</a>‎ <span dir="ltr" title="Contains 0 subcategories, 14 pages, and 0 files">(14 articles)</span></div>
+<div class="CategoryTreeChildren" style="display:none"></div></div>
+</li>
+<li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeEmptyBullet">► </span> <a class="CategoryTreeLabel CategoryTreeLabelNs14 CategoryTreeLabelCategory" href="/wiki/Category:Doctor_Who">Doctor Who</a>‎ <span dir="ltr" title="Contains 0 subcategories, 10 pages, and 0 files">(10 articles)</span></div>
+<div class="CategoryTreeChildren" style="display:none"></div></div>
+</li>
+"""
 
-
-def asd():
-    global number
-    while True:
-        print number
-        sleep(0.01)
-
-
-t = Thread(target=asd)
-t.setDaemon(True)
-t.start()
-dis()
+soup = BeautifulSoup(text)
+for a in soup.find_all("a"):
+    print a['href']
