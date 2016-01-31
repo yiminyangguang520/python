@@ -1,11 +1,10 @@
 *.txt
 *.pdf
 .idea/workspace.xml
-
 *.zip
-
 *.pyc
-
 .DS_Store
-
 *.db
+*.ogg
+*.mp3
+*.php
